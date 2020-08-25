@@ -9,6 +9,14 @@
 
 - [x] Create an express server
 - [x] Add POST routes for login, signup
+
+### FRONTEND
+
+- [ ] Create auth forms
+- [ ] Fetch POST reqs to the server with the FormData
+
+### BACKEND
+
 - [ ] Add auth logic using Passport.js
 
 ### FRONTEND
