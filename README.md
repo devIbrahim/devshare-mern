@@ -8,7 +8,7 @@
 ### BACKEND
 
 - [x] Create an express server
-- [ ] Add POST routes for login, signup
+- [x] Add POST routes for login, signup
 - [ ] Add auth logic using Passport.js
 
 ### FRONTEND
