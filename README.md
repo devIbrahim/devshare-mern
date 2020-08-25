@@ -7,7 +7,7 @@
 
 ### BACKEND
 
-- [ ] Create an express server
+- [x] Create an express server
 - [ ] Add POST routes for login, signup
 - [ ] Add auth logic using Passport.js
 
