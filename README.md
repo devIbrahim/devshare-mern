@@ -2,8 +2,8 @@
 
 ### FRONTEND
 
-- [ ] Create a React App.
-- [ ] Make 3 routes in it (using react-router-dom), LOGIN, SIGNUP, MAIN
+- [x] Create a React App.
+- [x] Make 3 routes in it (using react-router-dom), LOGIN, SIGNUP, MAIN
 
 ### BACKEND
 
