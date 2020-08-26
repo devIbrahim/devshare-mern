@@ -20,7 +20,7 @@
 - [x] Add Signup auth logic
 
   - [x] Error handling
-  - [ ] Password hashing
+  - [x] Password hashing using bcrypt & mongoose hooks
 
 - [ ] Add Login auth logic
 

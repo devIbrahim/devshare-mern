@@ -29,13 +29,6 @@ const handleErrors = (err) => {
   return errors;
 };
 
-const loginPOST = async (req, res) => {
-  console.log(req.body);
-  res.json({
-    authenticated: true,
-  });
-};
-
 const signupPOST = async (req, res) => {
   // console.log(req.body);
   const { fullname, email, username, password, repeatPassword } = req.body;
@@ -59,6 +52,13 @@ const signupPOST = async (req, res) => {
       error: "PASSWORDS DON'T MATCH",
     });
   }
+};
+
+const loginPOST = async (req, res) => {
+  console.log(req.body);
+  res.json({
+    authenticated: true,
+  });
 };
 
 const testGET = (req, res) => {
