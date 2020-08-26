@@ -51,7 +51,6 @@ class Signup extends React.Component {
           <h1>SIGN UP</h1>
           <input
             onChange={this.handleChange}
-            required
             name="fullname"
             type="text"
             className="input-field"
@@ -59,15 +58,13 @@ class Signup extends React.Component {
           />
           <input
             onChange={this.handleChange}
-            required
             name="email"
-            type="email"
+            type="text"
             className="input-field"
             placeholder="email address"
           />
           <input
             onChange={this.handleChange}
-            required
             name="username"
             type="text"
             className="input-field"
@@ -75,7 +72,6 @@ class Signup extends React.Component {
           />
           <input
             onChange={this.handleChange}
-            required
             name="password"
             type="password"
             className="input-field"
@@ -83,7 +79,6 @@ class Signup extends React.Component {
           />
           <input
             onChange={this.handleChange}
-            required
             name="repeatPassword"
             type="password"
             className="input-field"

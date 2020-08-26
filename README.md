@@ -17,10 +17,18 @@
 
 ### BACKEND
 
-- [ ] Add authentication logic.
+- [x] Add Signup auth logic
+
+  - [x] Error handling
+  - [ ] Password hashing
+
+- [ ] Add Login auth logic
+
+  - [ ] Error handling
+  - [ ] Redirect to Main app route
 
 ### FRONTEND
 
+- [ ] Add extra input security on auth pages, like, required attr, types, etc
 - [ ] Protect Main application route.
-- [ ] When user is authenticated, redirect to Main page with the user's account details.
 - [ ] Update UI.
