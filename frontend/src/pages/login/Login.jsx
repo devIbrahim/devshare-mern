@@ -15,8 +15,6 @@ class Login extends React.Component {
 
   handleChange = (e) => {
     const { value, name } = e.target;
-    // let newState = this.state;
-    // newState.loginFormData[name] = value;
 
     let loginFormDataCopy = JSON.parse(
       JSON.stringify(this.state.loginFormData)
@@ -29,8 +27,18 @@ class Login extends React.Component {
     });
   };
 
-  handleLogin = (e) => {
+  handleLogin = async (e) => {
     e.preventDefault();
+
+    await fetch("/api/login", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(this.state.loginFormData),
+    })
+      .then((res) => res.json())
+      .then((data) => console.log(data));
   };
 
   render() {
@@ -39,6 +47,7 @@ class Login extends React.Component {
         <form onSubmit={this.handleLogin} className="login-form">
           <h1>LOGIN</h1>
           <input
+            required
             onChange={this.handleChange}
             name="email"
             type="text"
@@ -47,6 +56,7 @@ class Login extends React.Component {
             value={this.state.loginFormData.email}
           />
           <input
+            required
             onChange={this.handleChange}
             name="password"
             type="password"
