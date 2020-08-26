@@ -3,21 +3,21 @@
 ### FRONTEND
 
 - [x] Create a React App.
-- [x] Make 3 routes in it (using react-router-dom), LOGIN, SIGNUP, MAIN
+- [x] Make 3 routes, (using react-router-dom) '/', '/login' & '/signup'.
 
 ### BACKEND
 
-- [x] Create an express server
-- [x] Add POST routes for login, signup
+- [x] Create an express server.
+- [x] Add POST routes for login, signup.
 
 ### FRONTEND
 
-- [ ] Create auth forms
-- [ ] Fetch POST reqs to the server with the FormData
+- [x] Create auth form(s).
+- [x] Fetch POST reqs to the server with the FormData(s).
 
 ### BACKEND
 
-- [ ] Add auth logic using Passport.js
+- [ ] Add authentication logic.
 
 ### FRONTEND
 
