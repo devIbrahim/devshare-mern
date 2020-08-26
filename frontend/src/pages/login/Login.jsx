@@ -27,7 +27,7 @@ class Login extends React.Component {
     });
   };
 
-  handleLogin = async (e) => {
+  handleSubmit = async (e) => {
     e.preventDefault();
 
     await fetch("/api/login", {
@@ -44,7 +44,7 @@ class Login extends React.Component {
   render() {
     return (
       <div className="login">
-        <form onSubmit={this.handleLogin} className="login-form">
+        <form onSubmit={this.handleSubmit} className="login-form">
           <h1>LOGIN</h1>
           <input
             required
