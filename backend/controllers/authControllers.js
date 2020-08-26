@@ -44,11 +44,14 @@ const signupPOST = async (req, res) => {
       res.status(201).json(user);
     } catch (err) {
       const errors = handleErrors(err);
-      res.status(400).json(errors);
+      res.status(400).json({
+        errType: "invalid-data",
+        errors,
+      });
     }
   } else {
     res.status(400).json({
-      authenticated: false,
+      errType: "password-match-fail",
       error: "PASSWORDS DON'T MATCH",
     });
   }

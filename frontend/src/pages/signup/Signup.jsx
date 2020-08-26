@@ -13,6 +13,7 @@ class Signup extends React.Component {
         password: "",
         repeatPassword: "",
       },
+      errors: {},
     };
   }
 
@@ -41,10 +42,25 @@ class Signup extends React.Component {
       body: JSON.stringify(this.state.signupFormData),
     })
       .then((res) => res.json())
-      .then((data) => console.log(data));
+      .then((data) => {
+        if (data.errType === "password-match-fail") {
+          this.setState({ errors: { password: data.error } });
+        } else if (data.errType === "invalid-data") {
+          this.setState({
+            errors: data.errors,
+          });
+        } else {
+          this.setState({
+            errors: {},
+          });
+          console.log(data);
+        }
+      });
   };
 
   render() {
+    let errKeys = Object.values(this.state.errors);
+
     return (
       <div className="signup">
         <form onSubmit={this.handleSubmit} className="signup-form">
@@ -86,6 +102,17 @@ class Signup extends React.Component {
           />
           <input type="submit" value="SUBMIT" />
           <Link to="/login">Login</Link>
+          <div className="errors">
+            <ul>
+              {errKeys.map((err, i) => {
+                if (err.length) {
+                  return <li key={i}>{err}</li>;
+                } else {
+                  return false;
+                }
+              })}
+            </ul>
+          </div>
         </form>
       </div>
     );
