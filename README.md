@@ -32,9 +32,10 @@
 
 #### FRONTEND
 
-- [ ] Seperate the app into 2 route groups, Public & Private.
-  - Private route group should contain all the main application routes.
-  - Public route group should only contain the auth routes.
+- [x] Make a PrivateRoute component which will be used for components that only authed users can access.
+  - [x] Make an isLoggedIn func that returns a hardcoded true/false value (just for now) & complete the PrivateRoute component.
+  - [ ] If an authed user goes to the login/signup route, redirect them to the Main app route.
+  - [ ] Add JWT logic to the isLoggedIn func.
 
 #### MOSTLY BACKEND
 
