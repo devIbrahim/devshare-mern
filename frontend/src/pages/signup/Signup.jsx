@@ -1,6 +1,6 @@
 import React from "react";
 
-import { Link } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
 
 class Signup extends React.Component {
   constructor(props) {
@@ -14,6 +14,7 @@ class Signup extends React.Component {
         repeatPassword: "",
       },
       errors: {},
+      redirect: null,
     };
   }
 
@@ -49,16 +50,21 @@ class Signup extends React.Component {
           this.setState({
             errors: data.errors,
           });
-        } else {
+        } else if (data.user) {
           this.setState({
             errors: {},
           });
-          console.log(data);
+          // redirect
+          this.setState({ redirect: "/" });
         }
       });
   };
 
   render() {
+    if (this.state.redirect) {
+      return <Redirect to={this.state.redirect} />;
+    }
+
     let errKeys = Object.values(this.state.errors);
 
     return (
