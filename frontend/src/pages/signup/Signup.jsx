@@ -65,7 +65,7 @@ class Signup extends React.Component {
       return <Redirect to={this.state.redirect} />;
     }
 
-    let errKeys = Object.values(this.state.errors);
+    let errVals = Object.values(this.state.errors);
 
     return (
       <div className="signup">
@@ -110,7 +110,7 @@ class Signup extends React.Component {
           <Link to="/login">Login</Link>
           <div className="errors">
             <ul>
-              {errKeys.map((err, i) => {
+              {errVals.map((err, i) => {
                 if (err.length) {
                   return <li key={i}>{err}</li>;
                 } else {

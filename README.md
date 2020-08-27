@@ -22,13 +22,13 @@
   - [x] Error handling
   - [x] Password hashing using bcrypt & mongoose hooks
 
-- [ ] Add Login auth logic
+- [x] Add Login auth logic
 
-  - [ ] Error handling
-  - [ ] Redirect to Main app route
+  - [x] Error handling
+  - [x] Redirect to Main app route
 
 ### FRONTEND
 
-- [ ] Add extra input security on auth pages, like, required attr, types, etc
 - [ ] Protect Main application route.
+- [ ] Add extra input security on auth pages, like, required attr, types, etc
 - [ ] Update UI.

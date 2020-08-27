@@ -4,14 +4,22 @@ const User = require("../models/User");
 
 // handle errs
 const handleErrors = (err) => {
-  // console.log(err.message, err.code);
   let errors = { fullname: "", email: "", username: "", password: "" };
 
-  // dupliacte err code
+  // non-existing user - login
+  if (err.message === "That user does not exist") {
+    errors = { email: err.message };
+    return errors;
+  }
+
+  // incorrect password - login
+  if (err.message === "Incorrect password") {
+    errors = { password: err.message };
+    return errors;
+  }
+
+  // dupliacte err code - signup
   if (err.code === 11000) {
-    // errors.email = "That email is already registered";
-    // return errors;
-    // console.log(err.keyValue);
     if (Object.keys(err.keyValue)[0] === "email") {
       errors.email = "That email is already registered";
       return errors;
@@ -21,7 +29,7 @@ const handleErrors = (err) => {
     }
   }
 
-  // validation errs
+  // validation errs - signup
   if (err.message.includes("user validation failed")) {
     Object.values(err.errors).forEach(({ path, message }) => {
       errors[path] = message;
@@ -66,16 +74,28 @@ const signupPOST = async (req, res) => {
   } else {
     res.status(400).json({
       errType: "password-match-fail",
-      error: "PASSWORDS DON'T MATCH",
+      error: "Passwords don't match",
     });
   }
 };
 
 const loginPOST = async (req, res) => {
-  console.log(req.body);
-  res.json({
-    authenticated: true,
-  });
+  const { email, password } = req.body;
+
+  try {
+    const user = await User.login(email, password);
+
+    const token = createToken(user._id);
+    res.cookie("jwt", token, { httpOnly: true, maxAge: maxAge * 1000 });
+
+    res.status(200).json({ user: user._id });
+  } catch (err) {
+    const errors = handleErrors(err);
+    res.status(400).json({
+      errType: "incorrect-data",
+      errors,
+    });
+  }
 };
 
 const testGET = (req, res) => {

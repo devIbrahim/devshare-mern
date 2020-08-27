@@ -1,6 +1,6 @@
 import React from "react";
 
-import { Link } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
 
 class Login extends React.Component {
   constructor(props) {
@@ -10,6 +10,8 @@ class Login extends React.Component {
         email: "",
         password: "",
       },
+      redirect: null,
+      errors: {},
     };
   }
 
@@ -38,16 +40,28 @@ class Login extends React.Component {
       body: JSON.stringify(this.state.loginFormData),
     })
       .then((res) => res.json())
-      .then((data) => console.log(data));
+      .then((data) => {
+        if (data.errors) {
+          this.setState({ errors: data.errors });
+          console.log(data.errors);
+        } else if (data.user) {
+          this.setState({ redirect: "/" });
+        }
+      });
   };
 
   render() {
+    if (this.state.redirect) {
+      return <Redirect to={this.state.redirect} />;
+    }
+
+    let errVals = Object.values(this.state.errors);
+
     return (
       <div className="login">
         <form onSubmit={this.handleSubmit} className="login-form">
           <h1>LOGIN</h1>
           <input
-            required
             onChange={this.handleChange}
             name="email"
             type="text"
@@ -56,7 +70,6 @@ class Login extends React.Component {
             value={this.state.loginFormData.email}
           />
           <input
-            required
             onChange={this.handleChange}
             name="password"
             type="password"
@@ -66,6 +79,11 @@ class Login extends React.Component {
           />
           <input type="submit" value="LOGIN" />
           <Link to="/signup">Sign up</Link>
+          <ul>
+            {errVals.map((err, i) => (
+              <li key={i}>{err}</li>
+            ))}
+          </ul>
         </form>
       </div>
     );

@@ -30,9 +30,35 @@ userSchema.pre("save", async function (next) {
   const salt = await bcrypt.genSalt();
   this.password = await bcrypt.hash(this.password, salt);
 
-  console.log("USER ABOUT TO BE CREATED & SAVED", this);
   next();
 });
+
+userSchema.statics.login = async function (username, password) {
+  let user = await this.findOne({ username });
+  if (user) {
+    // Compare password
+    const auth = await bcrypt.compare(password, user.password);
+    if (auth) {
+      return user;
+    } else {
+      throw Error("Incorrect password");
+    }
+  } else {
+    user = await this.findOne({ email: username });
+
+    if (user) {
+      // Compare password
+      const auth = await bcrypt.compare(password, user.password);
+      if (auth) {
+        return user;
+      } else {
+        throw Error("Incorrect password");
+      }
+    } else {
+      throw Error("That user does not exist");
+    }
+  }
+};
 
 const User = mongoose.model("user", userSchema);
 
