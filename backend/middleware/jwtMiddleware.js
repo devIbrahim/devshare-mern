@@ -11,6 +11,7 @@ const requireAuth = (req, res, next) => {
         });
       } else {
         console.log(decodedToken);
+        res.locals.dToken = decodedToken;
         next();
       }
     });

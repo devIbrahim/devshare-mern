@@ -22,10 +22,10 @@ class Homepage extends React.Component {
   render() {
     return this.state.user === null ? (
       <div className="loading-homepage">
-        <img id="loader" src={Loader} />
+        <img alt="Loading..." id="loader" src={Loader} />
       </div>
     ) : (
-      <h1 id="home-title">HOMEPAGE</h1>
+      <h1 id="home-title">HELLO, {this.state.user.fullname} </h1>
     );
   }
 }
