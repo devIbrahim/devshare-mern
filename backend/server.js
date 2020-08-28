@@ -4,6 +4,7 @@ const bodyParser = require("body-parser");
 var cors = require("cors");
 const mongoose = require("mongoose");
 const cookieParser = require("cookie-parser");
+const appRoutes = require("./routes/appRoutes");
 
 const authRoutes = require("./routes/authRoutes");
 
@@ -13,6 +14,7 @@ const app = express();
 app.use(cors());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
+app.use(cookieParser());
 
 // DATABASE CONNECTION
 const dbURI =
@@ -35,5 +37,6 @@ mongoose
 
 // ROUTES
 app.use("/api", authRoutes);
+app.use("/user", appRoutes);
 
 app.get("/", (req, res) => res.send("THIS IS THE SERVER"));

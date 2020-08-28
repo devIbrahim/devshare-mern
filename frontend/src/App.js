@@ -7,7 +7,7 @@ import Signup from "./pages/signup/Signup";
 import Homepage from "./pages/homepage/Homepage";
 import PrivateRoute from "./components/PrivateRoute";
 import PublicRoute from "./components/PublicRoute";
-import isLoggedIn from "./utils/isLoggedIn";
+import { hello } from "./utils/isLoggedIn";
 
 import "./App.css";
 
@@ -16,10 +16,34 @@ const Test = () => <h1>TEST</h1>;
 class App extends Component {
   constructor(props) {
     super(props);
+
     this.state = {
-      authed: isLoggedIn(),
+      authed: hello(),
     };
   }
+
+  // async UNSAFE_componentWillMount() {
+  //   // fetch("/user/userdata")
+  //   // .then((res) => res.json())
+  //   // .then((data) => {
+  //   //   if (data.user_data) {
+  //   //     console.log(data);
+  //   //     return true;
+  //   //   } else {
+  //   //     console.log(data);
+  //   //     return false;
+  //   //   }
+  //   // });
+  //   await axios.get("/user/userdata").then((res) => {
+  //     if (res.user_data !== undefined) {
+  //       this.setState({ authed: true });
+  //     } else {
+  //       this.setState({ authed: false });
+  //     }
+  //     console.log(res.data);
+  //   });
+  // }
+
   render() {
     return (
       <div className="App">
