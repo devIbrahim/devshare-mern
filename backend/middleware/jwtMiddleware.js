@@ -1,3 +1,5 @@
+const jwt = require("jsonwebtoken");
+
 const requireAuth = (req, res, next) => {
   const token = req.cookies.jwt;
 
@@ -5,7 +7,7 @@ const requireAuth = (req, res, next) => {
     jwt.verify(token, process.env.JWT_SECRET, (err, decodedToken) => {
       if (err) {
         res.json({
-          AUTH_FAILED: "JWT IS INVALID",
+          authed: false,
         });
       } else {
         console.log(decodedToken);
@@ -14,7 +16,7 @@ const requireAuth = (req, res, next) => {
     });
   } else {
     res.json({
-      AUTH_FAILED: "JWT NOT FOUND",
+      authed: false,
     });
   }
 };

@@ -1,5 +1,6 @@
 const userdataGET = (req, res) => {
   res.json({
+    authed: true,
     USER_DATA: {
       name: "Syed Anees Ibrahim",
       email: "syedaneesibrahom@gmail.com",
