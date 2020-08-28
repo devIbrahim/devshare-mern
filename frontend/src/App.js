@@ -6,6 +6,7 @@ import Login from "./pages/login/Login";
 import Signup from "./pages/signup/Signup";
 import Homepage from "./pages/homepage/Homepage";
 import PrivateRoute from "./components/PrivateRoute";
+import PublicRoute from "./components/PublicRoute";
 import isLoggedIn from "./utils/isLoggedIn";
 
 import "./App.css";
@@ -29,14 +30,21 @@ class App extends Component {
             path="/"
             component={Homepage}
           />
-          <Route exact path="/login" component={Login} />
-          <Route exact path="/signup" component={Signup} />
-          <PrivateRoute
+          <PublicRoute
+            authed={this.state.authed}
+            publicOnly={true}
+            exact
+            path="/login"
+            component={Login}
+          />
+          <PublicRoute
+            publicOnly={true}
             authed={this.state.authed}
             exact
-            path="/test"
-            component={Test}
+            path="/signup"
+            component={Signup}
           />
+          <Route exact path="/test" component={Test} />
         </Router>
       </div>
     );

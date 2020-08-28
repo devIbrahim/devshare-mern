@@ -79,6 +79,7 @@ class Login extends React.Component {
           />
           <input type="submit" value="LOGIN" />
           <Link to="/signup">Sign up</Link>
+          <Link to="/">Home</Link>
           <ul>
             {errVals.map((err, i) => (
               <li key={i}>{err}</li>
