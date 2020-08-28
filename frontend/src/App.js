@@ -7,7 +7,6 @@ import Signup from "./pages/signup/Signup";
 import Homepage from "./pages/homepage/Homepage";
 import PrivateRoute from "./components/PrivateRoute";
 import PublicRoute from "./components/PublicRoute";
-import { hello } from "./utils/isLoggedIn";
 
 import "./App.css";
 
@@ -18,31 +17,17 @@ class App extends Component {
     super(props);
 
     this.state = {
-      authed: hello(),
+      authed: null,
     };
   }
 
-  // async UNSAFE_componentWillMount() {
-  //   // fetch("/user/userdata")
-  //   // .then((res) => res.json())
-  //   // .then((data) => {
-  //   //   if (data.user_data) {
-  //   //     console.log(data);
-  //   //     return true;
-  //   //   } else {
-  //   //     console.log(data);
-  //   //     return false;
-  //   //   }
-  //   // });
-  //   await axios.get("/user/userdata").then((res) => {
-  //     if (res.user_data !== undefined) {
-  //       this.setState({ authed: true });
-  //     } else {
-  //       this.setState({ authed: false });
-  //     }
-  //     console.log(res.data);
-  //   });
-  // }
+  componentDidMount() {
+    fetch("/user/userdata")
+      .then((res) => res.json())
+      .then((data) => {
+        this.setState({ authed: data.authed });
+      });
+  }
 
   render() {
     return (

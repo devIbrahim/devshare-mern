@@ -7,6 +7,7 @@ const cookieParser = require("cookie-parser");
 const appRoutes = require("./routes/appRoutes");
 
 const authRoutes = require("./routes/authRoutes");
+const appRoutes = require("./routes/appRoutes");
 
 const app = express();
 

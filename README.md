@@ -36,14 +36,7 @@
 
   - [x] Make an isLoggedIn func that returns a hardcoded true/false value (just for now) & complete the PrivateRoute component.
   - [x] If an authed user goes to the login/signup route, redirect them to the Main app route.
-
-#### BACKEND
-
-- [ ] Create JWT Middleware for checking user's auth state.
-
-#### FRONTEND
-
-- [ ] Add JWT logic to the isLoggedIn func.
+  - [x] Fetching the auth state.
 
 #### MOSTLY BACKEND
 
